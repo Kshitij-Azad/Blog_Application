@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="static/css/blog.css" rel="stylesheet">
+
+    
+</head>
+
+<body class="" style="background-color: white;">
+	<div th:insert="~{user/nav}"></div>
+
+	
+	<div class="container d-flex justify-content-center align-items-center" style="margin-top: 2%;">
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title"><b>Form</b></h5>
+                <form th:object="${post}" th:action="@{/user/savePost}" method="post" enctype="multipart/form-data" >
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input class="form-control" type="text" id="title" name="title" required="required">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input class="form-control" type="text" id="description" name="content" required="required">
+                    </div>
+                    
+                    <!-- <div class="mb-3">
+                        <label for="uploadImage" class="form-label">Upload Image</label>
+                        <input class="form-control" type="file" id="imagename" name="img">
+                    </div> -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

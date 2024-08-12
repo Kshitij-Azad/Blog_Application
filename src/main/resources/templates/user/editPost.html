@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/blog.css" rel="stylesheet">
+</head>
+
+<body style="background-color: white;">
+    <!-- Navigation Bar -->
+<div th:insert="~{user/nav}"></div>    
+
+    <!-- Main Content -->
+    <div class="container d-flex justify-content-center align-items-center" style="margin-top: 2%;">
+        <div class="card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title"><b>Form</b></h5>
+                <form th:action="@{/user/updatePostprocess}" method="post" th:object="${post}" enctype="multipart/form-data">
+                    
+                                <input type="hidden" th:field="*{pid}" name="pid">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input class="form-control" type="text" th:field="*{title}" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <input class="form-control" type="text" th:field="*{content}" id="description" name="content">
+                    </div>
+                    <!-- Uncomment this section if you need to upload an image -->
+                    <!--
+                    <div class="mb-3">
+                        <label for="uploadImage" class="form-label">Upload Image</label>
+                        <input class="form-control" type="file" id="imagename" name="img">
+                    </div>
+                    -->
+                    <button type="submit" class="btn btn-primary">SAVE</button>
+                    <a href="/user/mypost" class="btn btn-danger">Cancle</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

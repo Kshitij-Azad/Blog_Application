@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/blog.css" rel="stylesheet">
+</head>
+
+<body style="background-color: white;">
+    <div th:insert="~{user/nav}"></div>
+    
+    <div class="container full-height d-flex justify-content-center align-items-center" style="margin-top: 1%;" th:each="c : ${postList}">
+        <div class="card mb-3 col-md-6 col-lg-6">
+            <div class="alert alert-light" role="alert" style="margin-top: 2%;">
+                 <h5 th:text="'@' + ${c.user.name}"></h5></h5>
+                <!-- <img th:src="@{/images/joshua-hanson-e616t35Vbeg-unsplash.jpg}" class="card-img-top" alt="..."> -->
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${c.title}">Card title</h5>
+                <p class="card-text" th:text="${c.content}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+            	<a th:href="@{/user/viewPost/{pid}(pid=${c.pid})}" class="btn btn-primary">View</a> 
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
