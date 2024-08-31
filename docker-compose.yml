@@ -3,7 +3,7 @@ services:
   app:
     image: blog
     ports:
-      - "8080:8080"
+      - "8000:8000"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/blog?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=admin
