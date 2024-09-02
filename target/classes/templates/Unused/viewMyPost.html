@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div th:insert="~{user/nav}"></div>
+
+    <!-- Main Content -->
+    <div class="container mt-4" th:each="c : ${postList}">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-3" >
+                    <img th:src="@{/images/joshua-hanson-e616t35Vbeg-unsplash.jpg}" class="card-img-top" alt="Post image">
+                    <div class="card-body" >
+                        <h5 class="card-title" th:text="${c.title}" >Card title</h5>
+                        <p class="card-text" th:text="${c.content}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        
+                        <div class="d-flex justify-content-between">
+                            <!-- <a href="/user/viewMyPost" class="btn btn-primary">View</a> -->
+                            <<!-- a th:href="@{'/user/editPost/' +${c.pid}}" class="btn btn-secondary">Edit</a> -->
+                            <form th:action="@{'/user/editPost/' +${c.pid}}" method="post">
+      		
+      		<button type="submit"  class="btn btn btn-warning btm-sm" style="padding: 0.25rem 2rem;">Update</button>
+      		</form>
+                        </div>
+                        <div class="card mt-3">
+                    <div class="card-header">
+                        Comments
+                    </div>
+                    <div class="card-body">
+                        
+                        <form  method="post">
+                            <div class="form-group">
+                                <textarea class="form-control" name="content" rows="3" placeholder="Add a comment..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
+                        </form>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <!-- Comment Section -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
